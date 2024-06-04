@@ -11,10 +11,12 @@ cmake_minimum_required(VERSION 3.22.1)
 # build script scope).
 project("serial")
 
-set(libs_DIR  ${CMAKE_SOURCE_DIR}/../../../src/main/cpp/libs)
+#set(libs_DIR  ${CMAKE_SOURCE_DIR}/libs)
 
-#add_subdirectory(libusb )
+add_subdirectory(libusb)
+add_subdirectory(libftdi1)
 add_subdirectory(libusbserial )
+add_subdirectory(libavrdude )
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
@@ -28,30 +30,35 @@ add_subdirectory(libusbserial )
 # System.loadLibrary() and pass the name of the library defined here;
 # for GameActivity/NativeActivity derived applications, the same library name must be
 # used in the AndroidManifest.xml file.
-add_library(${CMAKE_PROJECT_NAME} SHARED
-    # List C/C++ source files with relative paths to this CMakeLists.txt.
-    main.c
-    native-lib.cpp)
+#add_library(${CMAKE_PROJECT_NAME} SHARED
+#    # List C/C++ source files with relative paths to this CMakeLists.txt.
+#    main.c
+#    native-lib.cpp)
 
-add_library(lib-usb SHARED IMPORTED)
-set_target_properties(
-        lib-usb
-        PROPERTIES IMPORTED_LOCATION
-        ${libs_DIR}/${ANDROID_ABI}/libusb1.0.so
-)
+#add_library(lib-usb SHARED IMPORTED)
+#set_target_properties(
+#        lib-usb
+#        PROPERTIES IMPORTED_LOCATION
+#        ${libs_DIR}/${ANDROID_ABI}/libusb1.0.so
+#)
+
 
 include_directories(
     libusbserial
     libusb
+    libavrdude
+    libftdi1
 )
 
 
 # Specifies libraries CMake should link to your target library. You
 # can link libraries from various origins, such as libraries defined in this
 # build script, prebuilt third-party libraries, or Android system libraries.
-target_link_libraries(${CMAKE_PROJECT_NAME}
-    # List libraries link to the target library
-    usbserial
-    lib-usb
-    android
-    log)
+#target_link_libraries(${CMAKE_PROJECT_NAME}
+#    # List libraries link to the target library
+#    avrdude
+#    ftdi1
+#    usbserial
+#    usb-1.0
+#    android
+#    log)

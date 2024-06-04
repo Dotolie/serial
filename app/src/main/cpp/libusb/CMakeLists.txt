@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.11)
 
-project(usb
+project(usb-1.0
 	VERSION 0.1
 	LANGUAGES C
 )
@@ -23,5 +23,5 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES})
 target_link_libraries(${PROJECT_NAME}
 		# List libraries link to the target library
 
-		pthread
+#		pthread
 		log)

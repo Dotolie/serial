@@ -27,6 +27,7 @@
 #define SYSFS_MOUNT_PATH	"/sys"
 #define SYSFS_DEVICE_PATH	SYSFS_MOUNT_PATH "/bus/usb/devices"
 
+#undef HAVE_LIBUDEV
 struct usbfs_ctrltransfer {
 	/* keep in sync with usbdevice_fs.h:usbdevfs_ctrltransfer */
 	__u8 bmRequestType;
